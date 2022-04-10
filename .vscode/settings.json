@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "*.s": "y86",
+        "iostream": "cpp"
+    }
+}
