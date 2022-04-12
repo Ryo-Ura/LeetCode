@@ -1,43 +1,44 @@
+/**
+ * @file FindPlayersWithZeroOrOneLosses.cpp
+ * @author Ryo-Ura
+ * @brief   Runtime: 1296 ms
+ *          Memory Usage: 196.4 MB
+ *          O(n)
+ * @version 0.1
+ * @date 2022-04-11
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
+
 #include <iostream>
 #include <string>
 #include <vector>
 #include <algorithm>
+#include <set>
+#include <map>
 using namespace std;
 
 class Solution {
 public:
     vector<vector<int>> findWinners(vector<vector<int>>& matches) {
+        set<int> players;
+        map<int, int> lose;
+        for(int i = 0; i < matches.size(); i++){
+            players.insert(matches[i][0]);
+            players.insert(matches[i][1]);
+            lose[matches[i][1]]++;
+        }
         vector<int> winner;
         vector<int> loser;
-        for(int i = 0; i < matches.size(); i++){
-            int win = matches[i][0];
-            int lost = matches[i][1];
-            int lostCount = 0;
-            bool allwin = true;
-            for(int j = 0; j < matches.size(); j++){
-                if(win == matches[j][1]){
-                    // lost
-                    allwin = false;
-                }
-                if(lost == matches[j][1]){
-                    lostCount++;
-                    if(lostCount > 2){
-                        break;
-                    }
-                }
+        for(int player : players){
+            if(lose[player] == 0){
+                winner.push_back(player);
             }
-            if(allwin){
-                winner.push_back(win);
-            }
-            if(lostCount == 1){
-                loser.push_back(lost);
+            if(lose.find(player)->second == 1){
+                loser.push_back(player);
             }
         }
-        
-        sort(winner.begin(), winner.begin() + winner.size());
-        winner.erase( unique( winner.begin(), winner.end() ), winner.end() );
-        sort(loser.begin(), loser.begin() + loser.size());
-        loser.erase( unique( loser.begin(), loser.end() ), loser.end() );
         vector<vector<int>> ret;
         ret.push_back(winner);
         ret.push_back(loser);
