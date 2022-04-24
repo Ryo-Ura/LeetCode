@@ -1,5 +1,5 @@
 /**
- * @file AddBinary67.cpp
+ * @file Q67-AddBinary.cpp
  * @author Ryo-Ura
  * @brief Runtime: 0 ms, faster than 100.00% of C++ online submissions for Add Binary.
  *        Memory Usage: 6.3 MB, less than 52.59% of C++ online submissions for Add Binary.
