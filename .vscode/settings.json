@@ -1,6 +1,10 @@
 {
     "files.associations": {
         "*.s": "y86",
-        "iostream": "cpp"
+        "iostream": "cpp",
+        "vector": "cpp",
+        "iosfwd": "cpp",
+        "iterator": "cpp",
+        "limits": "cpp"
     }
 }
