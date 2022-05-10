@@ -5,6 +5,7 @@
         "vector": "cpp",
         "iosfwd": "cpp",
         "iterator": "cpp",
-        "limits": "cpp"
+        "limits": "cpp",
+        "ios": "cpp"
     }
 }
