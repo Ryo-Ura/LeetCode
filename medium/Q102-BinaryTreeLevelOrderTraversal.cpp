@@ -52,11 +52,11 @@ public:
             myQueue.pop();
             if (ptr == nullptr)
             {
+                printf("ptr == nullptr\n");
                 result.push_back(level);
                 level.resize(0);
                 if (myQueue.size() > 0)
                     myQueue.push(nullptr);
-                
             }else{
                 level.push_back(ptr->val);
                 if (ptr->left != nullptr)
