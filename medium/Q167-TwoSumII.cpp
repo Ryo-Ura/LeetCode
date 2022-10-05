@@ -1,9 +1,14 @@
 /**
  * @file Q167-TwoSumII.cpp
  * @author your name (you@domain.com)
- * @brief used binary search to find target - numbers[i]
+ * @brief 
+ *        used binary search to find target - numbers[i]
  *      Runtime: 43 ms, faster than 5.56% of C++ online submissions for Two Sum II - Input Array Is Sorted.
  *      Memory Usage: 15.5 MB, less than 93.13% of C++ online submissions for Two Sum II - Input Array Is Sorted.
+ * 
+ *        used different approach in finding target which slightly increased the performance in Runtime
+ *      Runtime: 26 ms, faster than 46.48% of C++ online submissions for Two Sum II - Input Array Is Sorted.
+ *      Memory Usage: 15.7 MB, less than 43.57% of C++ online submissions for Two Sum II - Input Array Is Sorted.
  * @version 0.1
  * @date 2022-10-04
  * 
@@ -28,27 +33,19 @@ class Solution {
 public:
     vector<int> twoSum(vector<int>& numbers, int target) {
       vector<int> result;
-      for (int i = 0; i < numbers.size(); i++)
+      int left, right;
+      left = 0, right = numbers.size() - 1;
+      while (left < right)
       {
-        int toFind = target - numbers[i];
-        int left, right, mid;
-        left = i + 1;
-        right = numbers.size();
-        while (left < right)
-        {
-          mid = (left + right) / 2;
-          if (numbers[mid] < toFind)
-          {
-            left = mid + 1;
-          }else if(numbers[mid] > toFind){
-            right = mid;
-          }else{
-            result.push_back(i + 1);
-            result.push_back(mid + 1);
-            return result;
-          }
+        if((numbers[left] + numbers[right]) > target){
+          right--;
+        }else if((numbers[left] + numbers[right]) < target){
+          left++;
+        }else{
+          result.push_back(left + 1);
+          result.push_back(right + 1);
+          break;
         }
-        
       }
       return result;
     }
